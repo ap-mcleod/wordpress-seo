@@ -69,7 +69,7 @@ module.exports = function( grunt ) {
 		},
 
 		"build-ui-library": {
-			command: "cd packages/ui-library && yarn build && cd ../..",
+			command: "yarn workspace @yoast/ui-library run build",
 		},
 
 		"check-for-uncommitted-changes": {
