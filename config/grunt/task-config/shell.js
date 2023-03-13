@@ -68,6 +68,11 @@ module.exports = function( grunt ) {
 			command: "yarn list --pattern 'yoastseo|yoast-components' --depth=0",
 		},
 
+		// Build all monorepo packages, following the dependency tree upwards.
+		"build-packages": {
+			command: "yarn run lerna run build",
+		},
+		// Deprecated. Use the "build-packages" command instead.
 		"build-ui-library": {
 			command: "yarn workspace @yoast/ui-library run build",
 		},
