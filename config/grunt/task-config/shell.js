@@ -70,10 +70,10 @@ module.exports = function( grunt ) {
 
 		// Build all monorepo packages, following the dependency tree upwards.
 		"build-packages": {
-			command: "NODE_ENV=development yarn run lerna run build",
+			command: "NODE_ENV=development yarn run lerna run build --parallel",
 		},
 		"build-packages-prod": {
-			command: "NODE_ENV=production yarn run lerna run build",
+			command: "NODE_ENV=production yarn run lerna run build --parallel",
 		},
 		// Deprecated. Use the "build-packages" command instead.
 		"build-ui-library": {
