@@ -1,7 +1,7 @@
 {
   "name": "@yoast/social-metadata-previews",
   "version": "1.17.0",
-  "main": "src/index.js",
+  "main": "build/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Yoast/javascript.git",
@@ -11,7 +11,10 @@
   "license": "GPL-3.0",
   "private": false,
   "scripts": {
-    "prepublishOnly": "rm -rf dist && cp -R src dist && cp package.json dist/package.json && json -I -f dist/package.json -e \"this.main='index.js'\" && cp .babelrc dist/.babelrc",
+    "build": "yarn clean && yarn build:js",
+    "build:js": "babel src --out-dir build",
+    "clean": "rm -rf build",
+    "prepublishOnly": "yarn build",
     "test": "jest",
     "lint": "eslint . --max-warnings=0"
   },
