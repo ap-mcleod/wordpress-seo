@@ -2,16 +2,19 @@
   "name": "@yoast/helpers",
   "version": "0.16.0",
   "description": "All Yoast helper functions.",
-  "main": "src/index.js",
+  "main": "build/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Yoast/javascript.git",
     "directory": "packages/helpers"
   },
   "scripts": {
+    "build": "yarn clean && yarn build:js",
+    "build:js": "babel src --out-dir build",
+    "clean": "rm -rf build",
     "test": "jest",
     "lint": "eslint . --max-warnings=0",
-    "prepublishOnly": "rm -rf dist && cp -R src dist && cp package.json dist/package.json && json -I -f dist/package.json -e \"this.main='index.js'\" && cp .babelrc dist/.babelrc"
+    "prepublishOnly": "yarn build"
   },
   "author": "Yoast",
   "license": "GPL-3.0",
