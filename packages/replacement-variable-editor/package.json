@@ -2,7 +2,7 @@
   "name": "@yoast/replacement-variable-editor",
   "version": "1.17.0",
   "private": false,
-  "main": "src/index.js",
+  "main": "build/index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/Yoast/javascript.git",
@@ -11,9 +11,12 @@
   "author": "Team Yoast",
   "license": "GPL-3.0",
   "scripts": {
+    "build": "yarn clean && yarn build:js",
+    "build:js": "babel src --out-dir build",
+    "clean": "rm -rf build",
     "test": "jest",
     "lint": "eslint . --max-warnings=0",
-    "prepublishOnly": "rm -rf dist && cp -R src dist && cp package.json dist/package.json && json -I -f dist/package.json -e \"this.main='index.js'\" && cp .babelrc dist/.babelrc"
+    "prepublishOnly": "yarn build"
   },
   "jest": {
     "testURL": "http://localhost",
