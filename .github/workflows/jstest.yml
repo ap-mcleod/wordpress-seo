@@ -101,6 +101,9 @@ jobs:
           grunt --version
           yarn run jest --version
 
+      - name: Build all packages
+        run: yarn run build
+
       - name: Show Jest version
         run: yarn run jest --version
         working-directory: packages/${{ matrix.package }}
