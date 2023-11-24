@@ -81,7 +81,7 @@ jobs:
           grunt --version
 
       - name: Build all packages
-        run: yarn run build
+        run: yarn run build --ignore "@yoast/wordpress-seo"
 
       - name: Run Javascript lint
         run: yarn lint
