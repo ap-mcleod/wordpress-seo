@@ -8,6 +8,9 @@ settings:
   react:
     version: "16.8"
 
+ignorePatterns:
+  - "packages/*/build/*"
+
 rules:
   no-prototype-builtins: 0
   comma-dangle:
