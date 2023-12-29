@@ -49,10 +49,14 @@
   "devDependencies": {
     "@yoast/browserslist-config": "^1.2.2",
     "@yoast/postcss-preset": "^1.2.0",
+    "autoprefixer": "^10.4.16",
     "browserslist": "^4.7.3",
+    "cssnano": "^6.0.2",
     "enzyme": "^3.11.0",
     "enzyme-adapter-react-16": "^1.15.6",
     "jest-styled-components": "^7.0.3",
+    "postcss": "^8.4.32",
+    "postcss-import": "^15.1.0",
     "raf": "^3.4.0",
     "react-test-renderer": "^16.14.0"
   },
