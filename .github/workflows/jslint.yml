@@ -80,8 +80,5 @@ jobs:
           yarn --version
           grunt --version
 
-      - name: Build all packages
-        run: yarn run build
-
       - name: Run Javascript lint
         run: yarn lint
