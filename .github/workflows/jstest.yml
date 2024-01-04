@@ -102,7 +102,7 @@ jobs:
           yarn run jest --version
 
       - name: Build all packages
-        run: yarn run build --ignore "@yoast/wordpress-seo"
+        run: yarn run build
 
       - name: Show Jest version
         run: yarn run jest --version
