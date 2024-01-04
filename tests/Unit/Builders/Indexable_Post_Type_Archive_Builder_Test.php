@@ -21,12 +21,12 @@ use Yoast\WP\SEO\Values\Indexables\Indexable_Builder_Versions;
  * @group indexables
  * @group builders
  *
- * @coversDefaultClass \Yoast\WP\SEO\Builders\Indexable_Author_Builder
+ * @coversDefaultClass \Yoast\WP\SEO\Builders\Indexable_Post_Builder
  * @covers \Yoast\WP\SEO\Builders\Indexable_Post_Builder
  *
  * @phpcs:disable Yoast.NamingConventions.ObjectNameDepth.MaxExceeded
  */
-class Indexable_Post_Type_Archive_Builder_Test extends TestCase {
+final class Indexable_Post_Type_Archive_Builder_Test extends TestCase {
 
 	/**
 	 * Set up function stubs.
@@ -44,6 +44,8 @@ class Indexable_Post_Type_Archive_Builder_Test extends TestCase {
 	 * Tests the formatting of the indexable data.
 	 *
 	 * @covers ::build
+	 *
+	 * @return void
 	 */
 	public function test_build() {
 		$options_mock = Mockery::mock( Options_Helper::class );
@@ -65,17 +67,19 @@ class Indexable_Post_Type_Archive_Builder_Test extends TestCase {
 		$post_type_helper = Mockery::mock( Post_Type_Helper::class );
 		$post_type_helper->expects( 'is_post_type_archive_indexable' )->andReturnTrue();
 
-		$wpdb        = Mockery::mock( wpdb::class );
-		$wpdb->posts = 'wp_posts';
+		$wpdb            = Mockery::mock( wpdb::class );
+		$wpdb->posts     = 'wp_posts';
+		$GLOBALS['wpdb'] = $wpdb; // phpcs:ignore WordPress.WP.GlobalVariablesOverride.Prohibited -- Intended override for test purpose.
+
 		$wpdb->expects( 'prepare' )->once()->with(
 			"
-			SELECT MAX(p.post_modified_gmt) AS last_modified, MIN(p.post_date_gmt) AS published_at
-			FROM {$wpdb->posts} AS p
-			WHERE p.post_status IN (%s)
-				AND p.post_password = ''
-				AND p.post_type = %s
-		",
-			[ 'publish', 'my-post-type' ]
+				SELECT MAX(p.%i) AS last_modified, MIN(p.%i) AS published_at
+				FROM %i AS p
+				WHERE p.%i IN (%s)
+					AND p.%i = ''
+					AND p.%i = %s
+				",
+			[ 'post_modified_gmt', 'post_date_gmt', $wpdb->posts, 'post_status', 'publish', 'post_password', 'post_type', 'my-post-type' ]
 		)->andReturn( 'PREPARED_QUERY' );
 		$wpdb->expects( 'get_row' )->once()->with( 'PREPARED_QUERY' )->andReturn(
 			(object) [
@@ -110,6 +114,8 @@ class Indexable_Post_Type_Archive_Builder_Test extends TestCase {
 	 * Tests the formatting of the indexable data.
 	 *
 	 * @covers ::build
+	 *
+	 * @return void
 	 */
 	public function test_build_not_indexed() {
 		Monkey\Functions\expect( 'get_post_type_archive_link' )->never();
