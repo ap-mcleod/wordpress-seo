@@ -1,8 +1,10 @@
 extends: yoast
 
+parserOptions:
+  ecmaVersion: 2018
+
 env:
   jest: true # make sure describe, it, etc are known.
-  jasmine: true # make sure spyOn is known.
 
 rules:
   complexity: [1, 6]
