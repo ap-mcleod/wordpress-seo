@@ -197,6 +197,9 @@ jobs:
           grunt --version
           yarn run jest --version
 
+      - name: Build all packages
+        run: yarn run build --ignore "@yoast/wordpress-seo"
+
       - name: Show Jest version
         if: ${{ steps.checks-run.outputs.should == 'true' }}
         run: yarn run jest --version
