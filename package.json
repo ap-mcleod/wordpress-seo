@@ -46,7 +46,7 @@
     "@typescript-eslint/eslint-plugin": "^4.24.0",
     "@typescript-eslint/parser": "^4.24.0",
     "@wordpress/dependency-extraction-webpack-plugin": "^3.1.0",
-    "@wordpress/scripts": "^17.1.0",
+    "@wordpress/scripts": "^20.0.2",
     "@yoast/babel-preset": "^1.1.0",
     "@yoast/browserslist-config": "^1.2.2",
     "@yoast/grunt-plugin-tasks": "^2.4",
