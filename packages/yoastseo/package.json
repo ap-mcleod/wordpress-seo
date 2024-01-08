@@ -7,7 +7,7 @@
     "SEO",
     "text analysis"
   ],
-  "main": "index.js",
+  "main": "build/index.js",
   "license": "GPL-3.0",
   "version": "1.91.2",
   "repository": {
@@ -17,7 +17,8 @@
   },
   "scripts": {
     "start": "npm start --prefix examples/webpack",
-    "build": "grunt publish",
+    "build": "babel index.js --out-dir build && babel src --out-dir build/src && babel spec/specHelpers/factory.js --out-dir build/spec/specHelpers",
+    "_build": "grunt publish",
     "lint": "grunt check",
     "pretest": "yarn install-ci",
     "test": "jest",
