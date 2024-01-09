@@ -1,4 +1,5 @@
 /* eslint-disable capitalized-comments, spaced-comment */
+import { primeLanguageSpecificData } from "../../../src/languageProcessing/helpers/morphology/buildTopicStems";
 import {
 	computeScoresPerSentenceShortTopic,
 	computeScoresPerSentenceLongTopic,
@@ -352,6 +353,7 @@ describe( "Test for the research", function() {
 	} );
 	it( "when the topic words don't contain function words and the function words for this locale are not available, " +
 		"returns the same score", function() {
+		primeLanguageSpecificData.cache.clear();
 		const paper = new Paper(
 			sentencesIT.join( " " ),
 			{
