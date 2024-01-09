@@ -20,6 +20,7 @@ module.exports = {
 	moduleNameMapper: {
 		"^lodash-es$": "lodash",
 		"^lodash-es/(.*)$": "lodash/$1",
+		"^yoastseo$": "<rootDir>/index.js",
 	},
 	testPathIgnorePatterns: [
 		"/spec/specHelpers/*",
