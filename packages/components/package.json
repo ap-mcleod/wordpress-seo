@@ -37,7 +37,6 @@
   },
   "devDependencies": {
     "@yoast/browserslist-config": "^1.2.2",
-    "@yoast/postcss-preset": "^1.2.0",
     "autoprefixer": "^10.4.16",
     "browserslist": "^4.7.3",
     "cssnano": "^6.0.2",
